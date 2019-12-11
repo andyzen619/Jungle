@@ -2,7 +2,7 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
-    <h2>Email: andyzen619@gmail.com</h2>
+    <p><%= @order.email.to_s %></p>
   </header>
 
   <div class="panel panel-default items">
@@ -17,7 +17,6 @@
       </thead>
       <tbody>
         <% @order.line_items.each do |item| %>
-          <% item %>
           <%= render 'item', product: item.product, quantity: item.quantity.to_i %>
         <% end %>
       </tbody>
@@ -27,7 +26,7 @@
             TOTAL:
           </th>
           <th>
-            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
+            <%= humanized_money_with_symbol @order.total %>
           </th>
         </tr>
       </tfoot>
