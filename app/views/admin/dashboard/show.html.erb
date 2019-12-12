@@ -1,13 +1,13 @@
 <h1>Admin Dashboard</h1>
-<div style="display: flex">
-  <button type="button" class="btn btn-info" style="display: flex; width: 200px; justify-content: space-evenly; margin: 20px">
+<div class="top-stat-container">
+  <button type="button" class="btn btn-info stat-card">
     <img src="https://img.icons8.com/material-rounded/96/000000/copy.png">
    <div>
       <h3><%= @products.length %></h3>
       <h6>Products</h6>
     </div>
   </button>
-  <button type="button" class="btn btn-info " style="display: flex; width: 200px; justify-content: space-evenly; margin: 20px">
+  <button type="button" class="btn btn-info stat-card">
     <img src="https://img.icons8.com/ios/100/000000/categorize.png">
     <div>
       <h3><%= @categories.length %></h3>
