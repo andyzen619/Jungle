@@ -23,10 +23,7 @@ RSpec.describe Product, type: :model do
       it "Should not be valid when creating a product with no name" do
         nameMessage = @product.errors[:name][0];
 
-        puts nameMessage
         expect(nameMessage).to eq("can't be blank")
-
-        puts @correctProduct.errors.full_messages
         expect(@correctProduct.errors.full_messages).to be_empty
 
         
@@ -36,8 +33,6 @@ RSpec.describe Product, type: :model do
         
         nameMessage = @product.errors[:price][0];
         expect(nameMessage).to eq("is not a number")
-
-        puts @correctProduct.errors.full_messages
         expect(@correctProduct.errors.full_messages).to be_empty
       end 
 
@@ -45,8 +40,6 @@ RSpec.describe Product, type: :model do
       
         nameMessage = @product.errors[:quantity][0]
         expect(nameMessage).to eq("can't be blank")
-
-        puts @correctProduct.errors.full_messages
         expect(@correctProduct.errors.full_messages).to be_empty
       end 
 
@@ -54,9 +47,8 @@ RSpec.describe Product, type: :model do
        
         nameMessage = @product.errors[:category][0]
         expect(nameMessage).to eq("can't be blank")
-
-        puts @correctProduct.errors.full_messages
         expect(@correctProduct.errors.full_messages).to be_empty
       end 
+
     end
 end
