@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 5 }
 
   # Return user that corresponds to email and password
-  def authenticate_with_credentials(email, password)
+  def self.authenticate_with_credentials(email, password)
     @currentUser = User.find_by_email(email);
     if @currentUser && @currentUser.authenticate(password)
       @currentUser

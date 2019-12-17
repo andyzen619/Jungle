@@ -62,7 +62,6 @@ RSpec.describe User, type: :model do
 
       @testuser3.valid?
       error = @testuser3.errors.full_messages
-      p error
 
       expect(error).to include("Email has already been taken")
     end
@@ -74,9 +73,36 @@ RSpec.describe User, type: :model do
       @correctUser.valid?
 
       error = @correctUser.errors.full_messages
-      p error
 
       expect(error).to include('Password is too short (minimum is 5 characters)')
+    end
+  end
+
+  describe 'Test method: User.authenticate_with_credentials' do
+
+    before do 
+      @correctUser = User.new
+      @correctUser.name = "TestUser"
+      @correctUser.email = "test@mail.com"
+      @correctUser.password = 'test123'
+      @correctUser.password_confirmation = 'test123'
+
+      @correctUser.save
+    end
+
+    it 'Should return nil if user does not exists in the database' do
+      user = User.authenticate_with_credentials('1', '1')
+      expect(user).to eq(nil)
+    end
+
+    it 'Should return a user object if email exists and password is correct' do
+      user = User.authenticate_with_credentials('test@mail.com', 'test123')
+      expect(user).not_to eq(nil)
+    end
+
+    it 'Should return nil if user exists but does not have the correct password' do
+      user = User.authenticate_with_credentials('test@mail.com', 'test1234')
+      expect(user).to eq(nil)
     end
   end
 end
