@@ -10,7 +10,7 @@ require "capybara/poltergeist" # Add this line to require poltergeist
 
 # Specs flagged with `js: true` will use Capybara's JS driver. Set
 # that JS driver to :poltergeist
-Capybara.javascript_driver = :poltergeis
+Capybara.javascript_driver = :poltergeist
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
